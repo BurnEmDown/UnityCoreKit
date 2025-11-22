@@ -1,0 +1,19 @@
+{
+    "name": "Firebase",
+    "rootNamespace": "",
+    "references": [
+        "GUID:7cb94ed5a24747ab86bc2de014db48fc",
+        "GUID:1929d2c540ee48bd9bd64f5f764ec767",
+        "GUID:8935f667682f48cd902edc06463ef996",
+        "GUID:0f1684146c884d45870c7b66c826fb24"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
