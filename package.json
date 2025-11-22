@@ -1,0 +1,10 @@
+{
+  "name": "com.burnemdown.unitystarterkit",
+  "displayName": "Unity Starter Kit",
+  "version": "1.0.0",
+  "unity": "6000.0",
+  "description": "A lightweight, modular, production-ready foundation for starting new Unity projects.",
+  "author": {
+    "name": "Amit Reuveni"
+  }
+}
