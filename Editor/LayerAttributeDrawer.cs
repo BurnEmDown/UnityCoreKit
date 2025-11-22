@@ -1,7 +1,8 @@
+using UnityCoreKit.Runtime.Core.Utils;
 using UnityEditor;
 using UnityEngine;
 
-namespace Core.Utils.Editor
+namespace UnityCoreKit.Editor
 {
     /// <summary>
     /// Custom property drawer for <see cref="LayerAttribute"/>.

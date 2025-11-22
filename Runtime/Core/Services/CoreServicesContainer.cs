@@ -1,14 +1,14 @@
 using System;
-using Core.Interfaces;
+using UnityCoreKit.Runtime.Core.Interfaces;
 
-namespace Core.Services
+namespace UnityCoreKit.Runtime.Core.Services
 {
     /// <summary>
-    /// Provides an instance-based wrapper (facade) around the static <see cref="CoreServices"/> container.
+    /// Provides an instance-based wrapper (facade) around the static <see cref="IServices"/> container.
     /// </summary>
     /// <remarks>
     /// This class is useful when systems require dependency injection through an
-    /// <see cref="IServices"/> interface rather than directly referencing the static
+    /// <see cref="CoreServices"/> interface rather than directly referencing the static
     /// <see cref="CoreServices"/> class.
     ///
     /// It enables:

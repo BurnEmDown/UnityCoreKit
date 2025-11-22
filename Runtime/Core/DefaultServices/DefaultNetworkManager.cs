@@ -2,13 +2,13 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
-using Core.Interfaces;
-using Core.Utils.Logs;
-using Core.Utils;
 using Newtonsoft.Json;
+using UnityCoreKit.Runtime.Core.Interfaces;
+using UnityCoreKit.Runtime.Core.Utils;
+using UnityCoreKit.Runtime.Core.Utils.Logs;
 using UnityEngine.Networking;
 
-namespace Core.DefaultServices
+namespace UnityCoreKit.Runtime.Core.DefaultServices
 {
     /// <summary>
     /// Default UnityWebRequest-based implementation of <see cref="INetworkManager"/>.

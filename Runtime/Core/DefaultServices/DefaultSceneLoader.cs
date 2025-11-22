@@ -1,11 +1,11 @@
 using System;
 using System.Threading.Tasks;
-using Core.Interfaces;
+using UnityCoreKit.Runtime.Core.Interfaces;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using Logger = Core.Utils.Logs.Logger;
+using Logger = UnityCoreKit.Runtime.Core.Utils.Logs.Logger;
 
-namespace Core.DefaultServices
+namespace UnityCoreKit.Runtime.Core.DefaultServices
 {
     /// <summary>
     /// Default implementation of <see cref="ISceneLoader"/> using Unity's <see cref="SceneManager"/>.

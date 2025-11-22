@@ -1,11 +1,11 @@
-namespace Core.UpdateManagers.Interfaces
+namespace UnityCoreKit.Runtime.Core.UpdateManagers.Interfaces
 {
     /// <summary>
     /// Interface for objects that want to receive centralized <c>LateUpdate</c> callbacks.
     /// </summary>
     /// <remarks>
     /// Implement this interface to receive calls from the global
-    /// <see cref="Core.UpdateManagers.LateUpdateManager"/>, which invokes
+    /// <see cref="LateUpdateManager"/>, which invokes
     /// <see cref="ObservedLateUpdate"/> once per Unity <c>LateUpdate()</c> frame.
     ///
     /// This hook is ideal for camera adjustments, cleanup logic, and actions that
@@ -15,7 +15,7 @@ namespace Core.UpdateManagers.Interfaces
     {
         /// <summary>
         /// Called once per Unity <c>LateUpdate</c> frame by the
-        /// <see cref="Core.UpdateManagers.LateUpdateManager"/>.
+        /// <see cref="LateUpdateManager"/>.
         /// </summary>
         /// <remarks>
         /// Use this for tasks that should always happen after normal update logic,

@@ -3,7 +3,7 @@ using UnityEditor;
 using UnityEditor.SceneManagement;
 using UnityEngine.SceneManagement;
 
-namespace Core.Utils.Editor
+namespace UnityCoreKit.Editor
 {
     /// <summary>
     /// Editor utility for quickly entering Play Mode through a designated

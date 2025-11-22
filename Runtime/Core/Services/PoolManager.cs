@@ -2,13 +2,13 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Core.Interfaces;
-using Core.Utils.Extensions;
+using UnityCoreKit.Runtime.Core.Interfaces;
+using UnityCoreKit.Runtime.Core.Utils.Extensions;
 using UnityEngine;
-using Logger = Core.Utils.Logs.Logger;
+using Logger = UnityCoreKit.Runtime.Core.Utils.Logs.Logger;
 using Object = UnityEngine.Object;
 
-namespace Core.Services
+namespace UnityCoreKit.Runtime.Core.Services
 {
     /// <summary>
     /// Manages pools of reusable objects to minimize instantiation and destruction costs.

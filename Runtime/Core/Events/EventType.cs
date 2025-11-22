@@ -1,6 +1,6 @@
 using System;
 
-namespace Core.Events
+namespace UnityCoreKit.Runtime.Core.Events
 {
     /// <summary>
     /// Represents a base class for event types. 

@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Core.Interfaces
+namespace UnityCoreKit.Runtime.Core.Interfaces
 {
     /// <summary>
     /// Defines a contract for saving, loading, enumerating, and managing game data

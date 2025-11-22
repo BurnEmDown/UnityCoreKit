@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
-using Core.Events;
-using Core.Interfaces;
+using UnityCoreKit.Runtime.Core.Events;
+using UnityCoreKit.Runtime.Core.Interfaces;
 
-namespace Core.Services
+namespace UnityCoreKit.Runtime.Core.Services
 {
     /// <summary>
     /// Manages event listener registrations for objects, allowing grouped

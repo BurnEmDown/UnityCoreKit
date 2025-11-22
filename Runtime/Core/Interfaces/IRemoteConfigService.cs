@@ -1,6 +1,6 @@
 using System.Threading.Tasks;
 
-namespace Core.Interfaces
+namespace UnityCoreKit.Runtime.Core.Interfaces
 {
     /// <summary>
     /// Defines a contract for accessing remote configuration values provided by

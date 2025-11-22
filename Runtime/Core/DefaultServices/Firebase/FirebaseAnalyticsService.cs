@@ -1,13 +1,12 @@
 using System.Collections.Generic;
-using Core.Interfaces;
-using UnityEngine;
-using Logger = Core.Utils.Logs.Logger;
+using UnityCoreKit.Runtime.Core.Interfaces;
+using Logger = UnityCoreKit.Runtime.Core.Utils.Logs.Logger;
 
 #if FIREBASE_INSTALLED
 using Firebase.Analytics;
 #endif
 
-namespace Core.DefaultServices.Firebase
+namespace UnityCoreKit.Runtime.Core.DefaultServices.Firebase
 {
     /// <summary>
     /// Analytics service implementation backed by Firebase Analytics.

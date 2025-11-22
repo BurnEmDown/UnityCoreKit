@@ -1,10 +1,10 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Core.Interfaces;
+using UnityCoreKit.Runtime.Core.Interfaces;
 using UnityEngine;
-using Logger = Core.Utils.Logs.Logger;
+using Logger = UnityCoreKit.Runtime.Core.Utils.Logs.Logger;
 
-namespace Core.StubServices
+namespace UnityCoreKit.Runtime.Core.StubServices
 {
     /// <summary>
     /// A placeholder implementation of <see cref="IRemoteConfigService"/> designed for

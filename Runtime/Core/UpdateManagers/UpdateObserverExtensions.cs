@@ -1,7 +1,7 @@
-using Core.UpdateManagers.Interfaces;
+using UnityCoreKit.Runtime.Core.UpdateManagers.Interfaces;
 using UnityEngine;
 
-namespace Core.UpdateManagers
+namespace UnityCoreKit.Runtime.Core.UpdateManagers
 {
     /// <summary>
     /// Extension methods for registering MonoBehaviours to centralized update managers.

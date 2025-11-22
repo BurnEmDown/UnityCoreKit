@@ -1,14 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
-using Core.Interfaces;
-using Core.Services;
-using Core.StubServices;
-using Core.DefaultServices;
+using UnityCoreKit.Runtime.Core.DefaultServices;
+using UnityCoreKit.Runtime.Core.Interfaces;
+using UnityCoreKit.Runtime.Core.Services;
+using UnityCoreKit.Runtime.Core.StubServices;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using static Core.Services.CoreServices;
+using static UnityCoreKit.Runtime.Core.Services.CoreServices;
 
-namespace Core
+namespace UnityCoreKit.Runtime.Core
 {
     /// <summary>
     /// Bootstraps core services on startup and keeps itself alive

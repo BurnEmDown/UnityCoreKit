@@ -1,6 +1,6 @@
 using System;
 
-namespace Core.Interfaces
+namespace UnityCoreKit.Runtime.Core.Interfaces
 {
     /// <summary>
     /// Provides methods for logging crash reports and exceptions.

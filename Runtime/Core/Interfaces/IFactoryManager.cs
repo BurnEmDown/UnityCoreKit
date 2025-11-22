@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
 
-namespace Core.Interfaces
+namespace UnityCoreKit.Runtime.Core.Interfaces
 {
     /// <summary>
     /// Provides methods for generating objects asynchronously.

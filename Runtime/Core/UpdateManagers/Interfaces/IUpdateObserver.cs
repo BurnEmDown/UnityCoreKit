@@ -1,11 +1,11 @@
-namespace Core.UpdateManagers.Interfaces
+namespace UnityCoreKit.Runtime.Core.UpdateManagers.Interfaces
 {
     /// <summary>
     /// Interface for objects that want to receive centralized <c>Update</c> callbacks.
     /// </summary>
     /// <remarks>
     /// Implement this interface to receive update ticks from the global
-    /// <see cref="Core.UpdateManagers.UpdateManager"/>, which invokes
+    /// <see cref="UpdateManager"/>, which invokes
     /// <see cref="ObservedUpdate"/> once per Unity <c>Update()</c> frame.
     ///
     /// This allows you to avoid scattering multiple MonoBehaviour <c>Update</c>
@@ -16,7 +16,7 @@ namespace Core.UpdateManagers.Interfaces
     {
         /// <summary>
         /// Called once per Unity <c>Update</c> frame by the
-        /// <see cref="Core.UpdateManagers.UpdateManager"/>.
+        /// <see cref="UpdateManager"/>.
         /// </summary>
         /// <remarks>
         /// Use this for general per-frame logic, movement, timers, state

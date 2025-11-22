@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Concurrent;
 using UnityEngine;
-using Logger = Core.Utils.Logs.Logger;
+using Logger = UnityCoreKit.Runtime.Core.Utils.Logs.Logger;
 
-namespace Core.Utils
+namespace UnityCoreKit.Runtime.Core.Utils
 {
     /// <summary>
     /// A lightweight dispatcher used to marshal work from background threads

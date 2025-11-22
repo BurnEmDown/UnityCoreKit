@@ -1,9 +1,9 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Core.Interfaces;
+using UnityCoreKit.Runtime.Core.Interfaces;
 using UnityEngine;
 
-namespace Core.Services
+namespace UnityCoreKit.Runtime.Core.Services
 {
     /// <summary>
     /// A factory that delegates object creation to either an

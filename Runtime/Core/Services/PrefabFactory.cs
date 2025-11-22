@@ -1,11 +1,11 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Core.Interfaces;
+using UnityCoreKit.Runtime.Core.Interfaces;
 using UnityEngine;
-using Logger = Core.Utils.Logs.Logger;
+using Logger = UnityCoreKit.Runtime.Core.Utils.Logs.Logger;
 
-namespace Core.Services
+namespace UnityCoreKit.Runtime.Core.Services
 {
     /// <summary>
     /// Provides a factory for instantiating non-addressable prefabs.

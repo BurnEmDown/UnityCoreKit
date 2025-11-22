@@ -2,9 +2,9 @@
 using Firebase;
 #endif
 using System.Threading.Tasks;
-using Logger = Core.Utils.Logs.Logger;
+using Logger = UnityCoreKit.Runtime.Core.Utils.Logs.Logger;
 
-namespace Core.DefaultServices.Firebase
+namespace UnityCoreKit.Runtime.Core.DefaultServices.Firebase
 {
     /// <summary>
     /// Centralized initializer for Firebase services.
@@ -20,9 +20,9 @@ namespace Core.DefaultServices.Firebase
     /// <para><b>What this class does:</b></para>
     /// <list type="bullet">
     ///     <item>Checks and fixes Firebase dependency availability.</item>
-    ///     <item>Registers <see cref="FirebaseAnalyticsService"/>,
-    ///           <see cref="FirebaseRemoteConfigService"/>,
-    ///           and <see cref="FirebaseCrashReportingService"/>.</item>
+    ///     <item>Registers <see cref="FirebaseRemoteConfigService"/>,
+    ///           <see cref="FirebaseCrashReportingService"/>,
+    ///           and <see cref="FirebaseAnalyticsService"/>.</item>
     ///     <item>Executes remote config initialization during startup.</item>
     ///     <item>Falls back to stub services when Firebase is not installed or
     ///           dependencies cannot be resolved.</item>

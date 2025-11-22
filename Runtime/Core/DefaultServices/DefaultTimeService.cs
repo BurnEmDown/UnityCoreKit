@@ -1,7 +1,7 @@
-using Core.Interfaces;
+using UnityCoreKit.Runtime.Core.Interfaces;
 using UnityEngine;
 
-namespace Core.DefaultServices
+namespace UnityCoreKit.Runtime.Core.DefaultServices
 {
     /// <summary>
     /// Default implementation of <see cref="ITimeService"/> using Unity's <see cref="Time"/> API.

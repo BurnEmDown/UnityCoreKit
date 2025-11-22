@@ -1,7 +1,7 @@
 using System;
 using System.Threading.Tasks;
 
-namespace Core.Utils.Extensions
+namespace UnityCoreKit.Runtime.Core.Utils.Extensions
 {
     /// <summary>
     /// Extension helpers for scheduling Task continuations on Unity’s main thread.

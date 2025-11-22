@@ -1,6 +1,6 @@
 using System;
 
-namespace Core.Interfaces
+namespace UnityCoreKit.Runtime.Core.Interfaces
 {
     /// <summary>
     /// Defines a minimal service container capable of registering and resolving

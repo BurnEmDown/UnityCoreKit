@@ -1,7 +1,7 @@
 using System;
-using Core.Events;
+using UnityCoreKit.Runtime.Core.Events;
 
-namespace Core.Interfaces
+namespace UnityCoreKit.Runtime.Core.Interfaces
 {
     /// <summary>
     /// Defines a contract for a publish–subscribe event system.

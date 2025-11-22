@@ -1,4 +1,4 @@
-namespace Core.Interfaces
+namespace UnityCoreKit.Runtime.Core.Interfaces
 {
     /// <summary>
     /// Provides access to Unity time values and controls for pausing and resuming gameplay time.

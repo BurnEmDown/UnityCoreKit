@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Core.Utils.Extensions
+namespace UnityCoreKit.Runtime.Core.Utils.Extensions
 {
     /// <summary>
     /// Utility extension methods for working with <see cref="GameObject"/> instances.

@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace Core.Interfaces
+namespace UnityCoreKit.Runtime.Core.Interfaces
 {
     /// <summary>
     /// Defines methods for logging analytics events.

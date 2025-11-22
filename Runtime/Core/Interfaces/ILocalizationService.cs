@@ -1,4 +1,4 @@
-namespace Core.Interfaces
+namespace UnityCoreKit.Runtime.Core.Interfaces
 {
     /// <summary>
     /// Provides methods for managing localization and retrieving localized strings.

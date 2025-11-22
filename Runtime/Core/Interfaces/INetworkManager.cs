@@ -1,7 +1,7 @@
 using System.Threading.Tasks;
-using Core.Utils;
+using UnityCoreKit.Runtime.Core.Utils;
 
-namespace Core.Interfaces
+namespace UnityCoreKit.Runtime.Core.Interfaces
 {
     /// <summary>
     /// Defines the contract for all high-level network operations, including:

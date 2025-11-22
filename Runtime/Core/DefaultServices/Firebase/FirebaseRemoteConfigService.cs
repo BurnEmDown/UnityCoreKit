@@ -1,11 +1,11 @@
 using System.Threading.Tasks;
-using Core.Interfaces;
-using Logger = Core.Utils.Logs.Logger;
+using UnityCoreKit.Runtime.Core.Interfaces;
+using Logger = UnityCoreKit.Runtime.Core.Utils.Logs.Logger;
 #if FIREBASE_INSTALLED
 using Firebase.RemoteConfig;
 #endif
 
-namespace Core.DefaultServices.Firebase
+namespace UnityCoreKit.Runtime.Core.DefaultServices.Firebase
 {
     /// <summary>
     /// Remote config service implementation backed by Firebase Remote Config.
@@ -45,7 +45,7 @@ namespace Core.DefaultServices.Firebase
         /// <para>
         /// This method should be called once during application startup, typically
         /// from a bootstrap or initialization step (e.g. via
-        /// <see cref="FirebaseInitializer"/>).
+        /// <see cref="_initialized"/>).
         /// </para>
         ///
         /// <para>
@@ -55,7 +55,7 @@ namespace Core.DefaultServices.Firebase
         ///   <item>Logs an initialization message.</item>
         ///   <item>Calls <c>SetDefaultsAsync</c> with the configured default values.</item>
         ///   <item>Performs a <c>FetchAsync</c> and then <c>ActivateAsync</c> on success.</item>
-        ///   <item>Sets <see cref="_initialized"/> to <c>true</c> when activation completes.</item>
+        ///   <item>Sets <see cref="FirebaseInitializer"/> to <c>true</c> when activation completes.</item>
         /// </list>
         ///
         /// <para>

@@ -1,8 +1,8 @@
 using System.Collections.Generic;
-using Core.UpdateManagers.Interfaces;
+using UnityCoreKit.Runtime.Core.UpdateManagers.Interfaces;
 using UnityEngine;
 
-namespace Core.UpdateManagers
+namespace UnityCoreKit.Runtime.Core.UpdateManagers
 {
     /// <summary>
     /// Centralized dispatcher for all objects that implement

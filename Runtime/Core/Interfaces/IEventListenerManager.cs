@@ -1,7 +1,7 @@
 using System;
-using Core.Events;
+using UnityCoreKit.Runtime.Core.Events;
 
-namespace Core.Interfaces
+namespace UnityCoreKit.Runtime.Core.Interfaces
 {
     /// <summary>
     /// Provides methods for managing event listeners.

@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Core.Events
+namespace UnityCoreKit.Runtime.Core.Events
 {
     /// <summary>
     /// Represents data related to event listeners.

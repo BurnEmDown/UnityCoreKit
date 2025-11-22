@@ -1,8 +1,8 @@
 using System.Collections.Generic;
-using Core.Interfaces;
-using Logger = Core.Utils.Logs.Logger;
+using UnityCoreKit.Runtime.Core.Interfaces;
+using Logger = UnityCoreKit.Runtime.Core.Utils.Logs.Logger;
 
-namespace Core.StubServices
+namespace UnityCoreKit.Runtime.Core.StubServices
 {
     /// <summary>
     /// A placeholder implementation of <see cref="ILocalizationService"/> intended for

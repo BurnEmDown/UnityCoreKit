@@ -2,10 +2,10 @@ using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
-using Core.Events;
-using Core.Interfaces;
+using UnityCoreKit.Runtime.Core.Events;
+using UnityCoreKit.Runtime.Core.Interfaces;
 
-namespace Core.Services
+namespace UnityCoreKit.Runtime.Core.Services
 {
     /// <summary>
     /// Default implementation of <see cref="IEventsManager"/> providing a thread-safe,

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Core.Utils
+namespace UnityCoreKit.Runtime.Core.Utils
 {
     /// <summary>
     /// Attribute used to mark an integer field as a Unity Layer selector.

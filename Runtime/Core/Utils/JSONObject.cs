@@ -3,13 +3,13 @@
 #define USEFLOAT	//Use floats for numbers instead of doubles	(enable if you're getting too many significant digits in string output)
 //#define POOLING	//Currently using a build setting for this one (also it's experimental)
 
-using System.Diagnostics;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Text;
-using Core.Utils.Logs;
+using UnityCoreKit.Runtime.Core.Utils.Logs;
 
-namespace Core.Utils
+namespace UnityCoreKit.Runtime.Core.Utils
 {
 
 /*

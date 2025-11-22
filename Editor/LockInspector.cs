@@ -2,7 +2,7 @@ using System.Reflection;
 using UnityEditor;
 using UnityEngine;
 
-namespace Core.Utils.Editor
+namespace UnityCoreKit.Editor
 {
     /// <summary>
     /// Provides a menu command to toggle the lock state of the active Inspector,

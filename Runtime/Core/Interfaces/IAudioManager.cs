@@ -1,4 +1,4 @@
-namespace Core.Interfaces
+namespace UnityCoreKit.Runtime.Core.Interfaces
 {
     /// <summary>
     /// Provides methods for managing audio playback, including sound effects and music.

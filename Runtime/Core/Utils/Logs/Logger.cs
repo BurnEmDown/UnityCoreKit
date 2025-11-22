@@ -2,7 +2,7 @@ using System;
 using System.Diagnostics;
 using Debug = UnityEngine.Debug;
 
-namespace Core.Utils.Logs
+namespace UnityCoreKit.Runtime.Core.Utils.Logs
 {
     /// <summary>
     /// Provides conditional logging utilities that compile only when the <c>LOGS</c>
