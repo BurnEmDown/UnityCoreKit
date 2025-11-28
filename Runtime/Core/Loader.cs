@@ -106,7 +106,7 @@ namespace UnityCoreKit.Runtime.Core
         {
             // TODO: load your first scene here (if Loader lives in a dedicated bootstrap scene)
             // Example:
-            // SceneManager.LoadScene("MainMenu");
+            SceneManager.LoadScene("GameScene");
         }
         
         private void OnSceneLoaded(Scene loadedScene, LoadSceneMode loadMode)
