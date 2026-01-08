@@ -7,14 +7,14 @@ namespace UnityCoreKit.Runtime.UserInteractions.Services
     /// <summary>
     /// Typed adapter around <see cref="IEventsManager"/> for publishing and subscribing to interactions.
     /// </summary>
-    public sealed class InteractionsService : IInteractions
+    public sealed class UserInteractionsService : IUserInteractions
     {
         private readonly IEventsManager events;
 
         // Required so RemoveListener can remove the exact same delegate instance that was added.
         private readonly Dictionary<Action<UserInteractionEvent>, Action<object>> wrappers = new();
 
-        public InteractionsService(IEventsManager events)
+        public UserInteractionsService(IEventsManager events)
         {
             this.events = events;
         }
@@ -48,15 +48,5 @@ namespace UnityCoreKit.Runtime.UserInteractions.Services
             events.RemoveListener(UserInteractionEventType.Interaction, wrapper);
             wrappers.Remove(listener);
         }
-    }
-
-    /// <summary>
-    /// Public API for the interactions module.
-    /// </summary>
-    public interface IInteractions
-    {
-        void Publish(in UserInteractionEvent evt);
-        void Subscribe(Action<UserInteractionEvent> listener);
-        void Unsubscribe(Action<UserInteractionEvent> listener);
     }
 }
