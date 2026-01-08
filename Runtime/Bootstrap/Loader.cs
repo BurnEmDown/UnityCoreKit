@@ -4,11 +4,13 @@ using UnityCoreKit.Runtime.Core.DefaultServices;
 using UnityCoreKit.Runtime.Core.Interfaces;
 using UnityCoreKit.Runtime.Core.Services;
 using UnityCoreKit.Runtime.Core.StubServices;
+using UnityCoreKit.Runtime.UserInteractions;
+using UnityCoreKit.Runtime.UserInteractions.Services;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using static UnityCoreKit.Runtime.Core.Services.CoreServices;
 
-namespace UnityCoreKit.Runtime.Core
+namespace UnityCoreKit.Runtime.Bootstrap
 {
     /// <summary>
     /// Bootstraps core services on startup and keeps itself alive
@@ -45,6 +47,9 @@ namespace UnityCoreKit.Runtime.Core
             Register<IEventsManager>(() => new EventsManager());
             Register<IEventListenerManager>(() => new EventListenerManager(Get<IEventsManager>()));
 
+            // User Interactions Events Sub-system
+            Register<IUserInteractions>(new UserInteractionsService(Get<IEventsManager>()));
+            
             // Object creation (Addressables + non-addressable prefabs)
             Register<IObjectFactory>(() =>
             {
