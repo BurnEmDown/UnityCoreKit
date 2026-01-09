@@ -10,8 +10,8 @@ namespace UnityCoreKit.Runtime.UserInteractions
     {
         void Publish(in UserInteractionEvent evt);
 
-        void Subscribe(Action<UserInteractionEvent> listener);
+        void Subscribe(object owner, Action<UserInteractionEvent> listener);
 
-        void Unsubscribe(Action<UserInteractionEvent> listener);
+        void Unsubscribe(object owner, Action<UserInteractionEvent> listener);
     }
 }
