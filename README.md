@@ -85,6 +85,9 @@ public class Loader : MonoBehaviour
         // Core event system
         Register<IEventsManager>(() => new EventsManager());
         Register<IEventListenerManager>(() => new EventListenerManager(Get<IEventsManager>));
+        
+        // User Interactions Events Sub-system
+        Register<IUserInteractions>(new UserInteractionsService(Get<IEventsManager>()));
 
         // Object factory (Addressables + prefab map)
         var prefabMap = new System.Collections.Generic.Dictionary<string, GameObject>();
@@ -218,6 +221,36 @@ eventsManager.InvokeEvent(GameEventType.PlayerDied, null);
 ```
 
 EventListenerManager helps automatically register/unregister listeners, preventing leaks.
+
+### 🖱 User Interactions System (Presentation Layer)
+
+UnityCoreKit includes a  UserInteractions module designed to standardize how user input
+(clicks, taps, presses) is translated into semantic interaction events.
+
+Why a dedicated UserInteractions module?
+- Unity’s built-in input callbacks (OnMouseDown, IPointerClickHandler, etc.) are:
+- Tightly coupled to MonoBehaviours
+- Hard to reuse across different view types
+- Difficult to route, filter, or compose cleanly
+
+UserInteractions solves this by:
+- Emitting typed interaction events (e.g. “User clicked a Tile”)
+- Decoupling views from gameplay and presentation effects
+- Allowing interaction logic to be reused across the project
+
+#### Relationship to Core.Events
+
+Core.Events
+- Low-level, generic event bus
+- Used for gameplay, systems, analytics, internal messaging
+
+UserInteractions
+- Built on top of Core.Events
+- Converts raw input into user intent
+- Intended for UI and presentation logic
+
+Core does not depend on UserInteractions.
+UserInteractions depends on Core.
 
 ## 📁 Save System (JSON + Newtonsoft)
 
@@ -417,29 +450,30 @@ Minimal External Dependencies
 ---
 
 
-## 🗂 Folder Structure (Simplified)
+## 🗂 Folder Structure
 
-A typical layout:
+Kit folder layout:
 
 ```
-Assets/
-  Scripts/
+UnityCoreKit/
+  Editor/
+  Runtime/
+    Bootstrap/
     Core/
       Interfaces/
       Services/
+      StubServices/
       DefaultServices/
         Firebase/
       Events/
-      Logs/
-      Utils/
-        Extensions/
-        Editor/
       UpdateManagers/
-    Gameplay/
-    Editor/
+      Utils/
+        Logs/
+        Extensions/
+    UserInteractions/
+      Unity/
+      Services/
 ```
-
-/Core is intended to be reused as-is between projects.
 
 ## 📜 License
 
