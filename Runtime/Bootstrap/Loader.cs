@@ -48,7 +48,7 @@ namespace UnityCoreKit.Runtime.Bootstrap
             Register<IEventListenerManager>(() => new EventListenerManager(Get<IEventsManager>()));
 
             // User Interactions Events Sub-system
-            Register<IUserInteractions>(new UserInteractionsService(Get<IEventsManager>()));
+            Register<IUserInteractions>(new UserInteractionsService(Get<IEventsManager>(), Get<IEventListenerManager>()));
             
             // Object creation (Addressables + non-addressable prefabs)
             Register<IObjectFactory>(() =>
