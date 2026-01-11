@@ -20,7 +20,7 @@ namespace UnityCoreKit.Runtime.UserInteractions.Services
         private readonly IEventListenerManager listenerManager;
 
         // We must keep wrapper delegates so we can remove the exact same Action<object> instance later.
-        private readonly Dictionary<Action<UserInteractionEvent>, Action<object>> wrappers = new();
+        Dictionary<(object owner, Action<UserInteractionEvent> listener), Action<object>> wrappers = new();
 
         /// <summary>
         /// Initializes a new instance of the <see cref="UserInteractionsService"/> class.
@@ -56,7 +56,7 @@ namespace UnityCoreKit.Runtime.UserInteractions.Services
             if (listenerOwner == null) throw new ArgumentNullException(nameof(listenerOwner));
             if (listener == null) throw new ArgumentNullException(nameof(listener));
 
-            if (wrappers.ContainsKey(listener))
+            if (wrappers.ContainsKey((listenerOwner, listener)))
                 return;
 
             void Wrapper(object payload)
@@ -65,7 +65,7 @@ namespace UnityCoreKit.Runtime.UserInteractions.Services
                     listener(interactionEvent);
             }
 
-            wrappers[listener] = Wrapper;
+            wrappers[(listenerOwner, listener)] = Wrapper;
             listenerManager.AddListener(listenerOwner, UserInteractionEventType.Interaction, Wrapper);
         }
 
@@ -77,11 +77,11 @@ namespace UnityCoreKit.Runtime.UserInteractions.Services
             if (listenerOwner == null) throw new ArgumentNullException(nameof(listenerOwner));
             if (listener == null) throw new ArgumentNullException(nameof(listener));
 
-            if (!wrappers.TryGetValue(listener, out var wrapper))
+            if (!wrappers.TryGetValue((listenerOwner, listener), out var wrapper))
                 return;
 
             listenerManager.RemoveListener(listenerOwner, UserInteractionEventType.Interaction, wrapper);
-            wrappers.Remove(listener);
+            wrappers.Remove((listenerOwner, listener));
         }
 
         /// <summary>
