@@ -4,7 +4,7 @@ namespace UnityCoreKit.Runtime.UserInteractions
 {
     /// <summary>
     /// Strongly-typed payload describing a user interaction.
-    /// Published via <see cref="UnityCoreKit.Runtime.Interactions.Events.InteractionEventType.Interaction"/>.
+    /// Published via <see cref="UnityCoreKit.Runtime.UserInteractions.Services.UserInteractionsService.Publish"/>.
     /// </summary>
     public readonly struct UserInteractionEvent
     {
