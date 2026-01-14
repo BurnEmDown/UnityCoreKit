@@ -13,5 +13,7 @@ namespace UnityCoreKit.Runtime.UserInteractions
         void Subscribe(object owner, Action<UserInteractionEvent> listener);
 
         void Unsubscribe(object owner, Action<UserInteractionEvent> listener);
+        
+        void UnsubscribeAll(object owner);
     }
 }
