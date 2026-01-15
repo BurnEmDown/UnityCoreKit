@@ -1,5 +1,5 @@
 {
-    "name": "Services",
+    "name": "StubServices",
     "rootNamespace": "",
     "references": [
         "GUID:7cb94ed5a24747ab86bc2de014db48fc",
