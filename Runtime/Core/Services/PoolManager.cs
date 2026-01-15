@@ -68,23 +68,46 @@ namespace UnityCoreKit.Runtime.Core.Services
         /// </param>
         public async void InitPool<T>(string originalName, int amount) where T : Component
         {
+            await InitPoolAsync<T>(originalName, amount);
+        }
+
+        /// <summary>
+        /// Asynchronously initializes a pool by creating a predefined number of objects.
+        /// </summary>
+        /// <typeparam name="T">
+        /// The component type expected on each pooled object.
+        /// </typeparam>
+        /// <param name="originalName">
+        /// The key used to create objects from the factory and to identify the pool.
+        /// </param>
+        /// <param name="amount">
+        /// The number of objects to pre-instantiate into the pool.
+        /// </param>
+        /// <returns>
+        /// A task that completes when the pool has been initialized, or null if initialization failed.
+        /// </returns>
+        private async Task<PoolData> InitPoolAsync<T>(string originalName, int amount) where T : Component
+        {
             var generatedObjects = await objectFactory.CreateManyAsync<T>(originalName, amount);
 
             if (generatedObjects == null || !generatedObjects.Any())
             {
                 Logger.LogError($"Failed to generate objects for pool of item types {originalName}");
-                return;
+                return null;
             }
 
             var poolHolder = new GameObject($"Pool_{originalName}");
             poolHolder.transform.SetParent(PoolsHolder.transform);
 
-            pools[originalName] = new PoolData(generatedObjects.ToArray(), poolHolder);
+            var poolData = new PoolData(generatedObjects.ToArray(), poolHolder);
+            pools[originalName] = poolData;
+            return poolData;
         }
 
         /// <summary>
         /// Retrieves an object from the specified pool and returns it via a callback.
         /// If the pool is empty, an object is created on demand using the <see cref="IObjectFactory"/>.
+        /// If the pool doesn't exist, it will be initialized with a default size of 1.
         /// </summary>
         /// <typeparam name="T">
         /// The component type required on the pooled object.
@@ -98,17 +121,23 @@ namespace UnityCoreKit.Runtime.Core.Services
         /// <param name="onObjectReady">
         /// Callback invoked when the object is ready for use. Receives <c>null</c> on failure.
         /// </param>
-        public void GetFromPool<T>(string poolName, GameObject parentObject, Action<T> onObjectReady) where T : Component
+        public async void GetFromPool<T>(string poolName, GameObject parentObject, Action<T> onObjectReady) where T : Component
         {
+            // If pool doesn't exist, initialize it first
             if (!pools.ContainsKey(poolName))
             {
-                Logger.LogError("No pool of type: " + poolName);
-                onObjectReady(null);
-                return;
+                Logger.Log($"Pool '{poolName}' doesn't exist. Initializing with default size of 10.");
+                var poolData = await InitPoolAsync<T>(poolName, 10);
+                if (poolData == null)
+                {
+                    Logger.LogError($"Failed to initialize pool '{poolName}'");
+                    onObjectReady(null);
+                    return;
+                }
             }
 
-            PoolData poolData = pools[poolName];
-            if (!poolData.availableItems.Any())
+            PoolData pool = pools[poolName];
+            if (!pool.availableItems.Any())
             {
                 objectFactory.CreateAsync<T>(poolName).ContinueWithOnMainThread(
                     task =>
@@ -121,20 +150,21 @@ namespace UnityCoreKit.Runtime.Core.Services
                         else
                         {
                             T generatedObject = task.Result;
-                            poolData.AddNewToPool(generatedObject);
-                            SetupAndReturnObject(poolData, parentObject, onObjectReady);
+                            pool.AddNewToPool(generatedObject);
+                            SetupAndReturnObject(pool, parentObject, onObjectReady);
                         }
                     });
             }
             else
             {
-                SetupAndReturnObject(poolData, parentObject, onObjectReady);
+                SetupAndReturnObject(pool, parentObject, onObjectReady);
             }
         }
 
         /// <summary>
         /// Asynchronously retrieves an object from the specified pool.
         /// If the pool is empty, an object is created on demand using the <see cref="IObjectFactory"/>.
+        /// If the pool doesn't exist, it will be initialized with a default size of 1.
         /// </summary>
         /// <typeparam name="T">
         /// The component type required on the pooled object.
@@ -147,14 +177,20 @@ namespace UnityCoreKit.Runtime.Core.Services
         /// </param>
         /// <returns>
         /// A task that resolves to the retrieved component of type <typeparamref name="T"/>,
-        /// or <c>null</c> if the pool does not exist or an instance could not be created.
+        /// or <c>null</c> if an instance could not be created.
         /// </returns>
         public async Task<T> GetFromPoolAsync<T>(string poolName, GameObject parent) where T : Component
         {
+            // If pool doesn't exist, initialize it first
             if (!pools.TryGetValue(poolName, out var poolData))
             {
-                Logger.LogError("No pool of type: " + poolName);
-                return null;
+                Logger.Log($"Pool '{poolName}' doesn't exist. Initializing with default size of 10.");
+                poolData = await InitPoolAsync<T>(poolName, 10);
+                if (poolData == null)
+                {
+                    Logger.LogError($"Failed to initialize pool '{poolName}'");
+                    return null;
+                }
             }
 
             // If we have available items, use one immediately
