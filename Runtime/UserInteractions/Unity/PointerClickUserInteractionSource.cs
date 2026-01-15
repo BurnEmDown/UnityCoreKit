@@ -12,6 +12,12 @@ namespace UnityCoreKit.Runtime.UserInteractions.Unity
         private IUserInteractions interactions;
         private IUserInteractionTarget target;
         
+        private void OnDisable()
+        {
+            interactions = null;
+            target = null;
+        }
+        
         /// <summary>
         /// Initializes this source with the interactions service and the target identity.
         /// </summary>
@@ -31,6 +37,9 @@ namespace UnityCoreKit.Runtime.UserInteractions.Unity
 
             var evt = new UserInteractionEvent(UserInteractionType.Click, target, worldPos);
             interactions.Publish(in evt);
+            
+            Debug.Log($"[PointerClickUserInteractionSource] Publishing click for {target.InteractionKey}: {target}");
         }
+        
     }
 }
