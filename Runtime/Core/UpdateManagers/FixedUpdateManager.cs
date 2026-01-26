@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityCoreKit.Runtime.Core.UpdateManagers.Interfaces;
 using UnityEngine;
+using Logger = UnityCoreKit.Runtime.Core.Utils.Logs.Logger;
 
 namespace UnityCoreKit.Runtime.Core.UpdateManagers
 {
@@ -32,6 +33,12 @@ namespace UnityCoreKit.Runtime.Core.UpdateManagers
     public class FixedUpdateManager : MonoBehaviour
     {
         /// <summary>
+        /// Singleton instance of the FixedUpdateManager.
+        /// Auto-created on first use if not already present in the scene.
+        /// </summary>
+        private static FixedUpdateManager instance;
+
+        /// <summary>
         /// The active observers receiving FixedUpdate ticks.
         /// </summary>
         private static List<IFixedUpdateObserver> observers = new List<IFixedUpdateObserver>();
@@ -45,6 +52,27 @@ namespace UnityCoreKit.Runtime.Core.UpdateManagers
         /// Tracks current index during iteration, allowing safe removal.
         /// </summary>
         private static int currentIndex;
+
+        /// <summary>
+        /// Ensures a FixedUpdateManager instance exists in the scene.
+        /// If no instance exists, creates a new GameObject with the FixedUpdateManager component
+        /// and marks it as DontDestroyOnLoad to persist across scene transitions.
+        /// </summary>
+        /// <remarks>
+        /// This method is called automatically when the first observer is registered,
+        /// eliminating the need to manually add FixedUpdateManager to the scene hierarchy.
+        /// The created GameObject will persist for the lifetime of the application.
+        /// </remarks>
+        private static void EnsureInstance()
+        {
+            if (instance == null)
+            {
+                var go = new GameObject("FixedUpdateManager");
+                instance = go.AddComponent<FixedUpdateManager>();
+                DontDestroyOnLoad(go);
+                Logger.Log("[FixedUpdateManager] Auto-created FixedUpdateManager instance");
+            }
+        }
 
         /// <summary>
         /// Unity FixedUpdate loop — dispatches notifications in reverse order.
@@ -67,13 +95,15 @@ namespace UnityCoreKit.Runtime.Core.UpdateManagers
         /// </summary>
         public static void RegisterObserver(IFixedUpdateObserver observer)
         {
+            EnsureInstance(); // Auto-create if needed
+            
             if (!observers.Contains(observer) && !pendingObservers.Contains(observer))
             {
                 pendingObservers.Add(observer);
             }
             else
             {
-                Debug.LogWarning("Observer already registered.");
+                Logger.LogWarning("Observer already registered.");
             }
         }
 
@@ -93,7 +123,7 @@ namespace UnityCoreKit.Runtime.Core.UpdateManagers
             }
             else
             {
-                Debug.LogWarning("Observer not found for removal.");
+                Logger.LogWarning("Observer not found for removal.");
             }
         }
     }

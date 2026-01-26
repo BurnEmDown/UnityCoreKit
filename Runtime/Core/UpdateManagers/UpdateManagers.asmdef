@@ -1,3 +1,17 @@
 {
-  "name": "UpdateManagers"
+    "name": "UpdateManagers",
+    "rootNamespace": "",
+    "references": [
+        "GUID:8935f667682f48cd902edc06463ef996",
+        "GUID:0f1684146c884d45870c7b66c826fb24"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
 }

@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityCoreKit.Runtime.Core.UpdateManagers.Interfaces;
 using UnityEngine;
+using Logger = UnityCoreKit.Runtime.Core.Utils.Logs.Logger;
 
 namespace UnityCoreKit.Runtime.Core.UpdateManagers
 {
@@ -33,6 +34,12 @@ namespace UnityCoreKit.Runtime.Core.UpdateManagers
     public class UpdateManager : MonoBehaviour
     {
         /// <summary>
+        /// Singleton instance of the UpdateManager.
+        /// Auto-created on first use if not already present in the scene.
+        /// </summary>
+        private static UpdateManager instance;
+
+        /// <summary>
         /// The main list of active observers that receive update ticks.
         /// </summary>
         private static List<IUpdateObserver> observers = new List<IUpdateObserver>();
@@ -47,6 +54,27 @@ namespace UnityCoreKit.Runtime.Core.UpdateManagers
         /// while iterating backward.
         /// </summary>
         private static int currentIndex;
+
+        /// <summary>
+        /// Ensures an UpdateManager instance exists in the scene.
+        /// If no instance exists, creates a new GameObject with the UpdateManager component
+        /// and marks it as DontDestroyOnLoad to persist across scene transitions.
+        /// </summary>
+        /// <remarks>
+        /// This method is called automatically when the first observer is registered,
+        /// eliminating the need to manually add UpdateManager to the scene hierarchy.
+        /// The created GameObject will persist for the lifetime of the application.
+        /// </remarks>
+        private static void EnsureInstance()
+        {
+            if (instance == null)
+            {
+                var go = new GameObject("UpdateManager");
+                instance = go.AddComponent<UpdateManager>();
+                DontDestroyOnLoad(go);
+                Logger.Log("[UpdateManager] Auto-created UpdateManager instance");
+            }
+        }
 
         /// <summary>
         /// Unity Update loop — dispatches update notifications to all registered observers.
@@ -71,13 +99,15 @@ namespace UnityCoreKit.Runtime.Core.UpdateManagers
         /// <param name="observer">The observer to register.</param>
         public static void RegisterObserver(IUpdateObserver observer)
         {
+            EnsureInstance(); // Auto-create if needed
+            
             if (!observers.Contains(observer) && !pendingObservers.Contains(observer))
             {
                 pendingObservers.Add(observer);
             }
             else
             {
-                Debug.LogWarning("Observer already registered.");
+                Logger.LogWarning("Observer already registered.");
             }
         }
 
@@ -98,7 +128,7 @@ namespace UnityCoreKit.Runtime.Core.UpdateManagers
             }
             else
             {
-                Debug.LogWarning("Observer not found for removal.");
+                Logger.LogWarning("Observer not found for removal.");
             }
         }
     }
