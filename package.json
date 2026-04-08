@@ -6,5 +6,8 @@
   "description": "A lightweight, modular, production-ready foundation for starting new Unity projects.",
   "author": {
     "name": "Amit Reuveni"
+  },
+  "dependencies": {
+    "com.unity.nuget.newtonsoft-json": "3.2.1"
   }
 }
